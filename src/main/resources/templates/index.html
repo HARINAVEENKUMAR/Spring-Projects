@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body style="width: 80%;margin: 5% auto;">
+
+	<div>
+
+		<h2 style="text-align: center;">My First Spring Boot Project</h2>
+
+		<br />
+
+		<h3 style="text-align: center;">Student Registration Details</h3>
+		<br />
+
+	</div>
+	<br />
+
+
+	<div>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+
+					<th>Student Name</th>
+					<th>Course</th>
+					<th>Fee</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student : ${liststudent }">
+
+					<td th:text="${student.studentname}">StudentName</td>
+					<td th:text="${student.course}">Course</td>
+					<td th:text="${student.fee}">Fee</td>
+					<td>
+						<a th:href="@{'/edit/' + ${student.id}}">Edit</a>
+					</td>
+					<td>
+						<a th:href="@{'/delete/' + ${student.id}}">Delete</a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+	</div>
+	<br />
+
+
+
+
+	<form th:action="@{'/new'}" class="inline">
+
+
+
+		<button>Add new</button>
+
+	</form>
+
+
+
+
+</body>
+
+</html>
